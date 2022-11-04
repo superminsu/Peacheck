@@ -25,4 +25,6 @@ public class MemberFormDto {
     private String area;
     
     private String phone;
+    
+    private String position;
 }

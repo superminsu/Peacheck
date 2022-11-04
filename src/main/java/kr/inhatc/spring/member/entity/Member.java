@@ -42,6 +42,8 @@ public class Member {
     
     private String phone;
     
+    private String position;
+    
     
     public static Member createMember(MemberFormDto memberFormDto) {
         
@@ -52,6 +54,7 @@ public class Member {
         member.setCity(memberFormDto.getCity());
         member.setArea(memberFormDto.getArea());
         member.setPhone(memberFormDto.getPhone());
+        member.setPosition(memberFormDto.getPosition());
         return member;
     }
 }
