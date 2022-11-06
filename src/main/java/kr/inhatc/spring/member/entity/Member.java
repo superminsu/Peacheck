@@ -30,7 +30,7 @@ public class Member {
     @Column(name="member_number")
     private Long mbrNo;
      
-    private String id;          //아이디
+    private String id;          //아이디((로그인 시 회원 아이디 쿠키로 저장)
     
     private String password;    //비밀번호
     
