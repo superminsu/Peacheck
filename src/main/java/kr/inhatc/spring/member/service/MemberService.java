@@ -21,10 +21,10 @@ public class MemberService {
     // 로그인 기능
     public MemberFormDto login(MemberFormDto member) {
         try {
-            System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getName());
+            System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getId());
             System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getPassword());
-            Member findMember = memberRepository.findByNameAndPassword(member.getName(), member.getPassword());
-            if (findMember.getName() != null && findMember.getPassword() != null)
+            Member findMember = memberRepository.findByIdAndPassword(member.getId(), member.getPassword());
+            if (findMember.getId() != null && findMember.getPassword() != null)
                 return member;
             return null;
         } catch (Exception e) {
@@ -34,8 +34,9 @@ public class MemberService {
     
     // 회원가입
     public Member saveMember(Member member) {
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getName());
+        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getId());
         System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getPassword());
+        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getName());
         System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getBirthday());
         System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getCity());
         System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getArea());

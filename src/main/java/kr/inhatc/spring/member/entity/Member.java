@@ -26,30 +26,33 @@ import lombok.ToString;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="member_id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //mbrNo 값을 null로 하면 DB가 알아서 AUTO_INCREMENT 해준다
+    @Column(name="member_number")
+    private Long mbrNo;
+     
+    private String id;          //아이디
     
-    private String name;
+    private String password;    //비밀번호
     
-    private String password;
+    private String name;        //이름
     
-    private String birthday;
+    private String birthday;    //생년월일
     
-    private String city;
+    private String city;        //도시
     
-    private String area;
+    private String area;        //지역구
     
-    private String phone;
+    private String phone;       //전화번호
     
-    private String position;
+    private String position;    //직급
     
     
     public static Member createMember(MemberFormDto memberFormDto) {
         
         Member member = new Member();
-        member.setName(memberFormDto.getName());
+        member.setId(memberFormDto.getId());
         member.setPassword(memberFormDto.getPassword());    
+        member.setName(memberFormDto.getName());
         member.setBirthday(memberFormDto.getBirthday());
         member.setCity(memberFormDto.getCity());
         member.setArea(memberFormDto.getArea());

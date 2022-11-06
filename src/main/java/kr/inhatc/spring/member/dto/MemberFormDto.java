@@ -14,9 +14,11 @@ import lombok.ToString;
 @ToString
 public class MemberFormDto {
     
-    private String name;
+    private String id;
     
     private String password;
+    
+    private String name;
     
     private String birthday;
     
