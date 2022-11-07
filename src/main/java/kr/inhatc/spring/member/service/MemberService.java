@@ -19,13 +19,13 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     // 로그인 기능
-    public MemberFormDto login(MemberFormDto member) {
+    public Member login(Member member) {
         try {
             System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getId());
             System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getPassword());
             Member findMember = memberRepository.findByIdAndPassword(member.getId(), member.getPassword());
             if (findMember.getId() != null && findMember.getPassword() != null)
-                return member;
+                return findMember;
             return null;
         } catch (Exception e) {
             return null;
@@ -44,4 +44,7 @@ public class MemberService {
         System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getPosition());
         return memberRepository.save(member);
     }
+    
+    // 직급 리턴
+    
 }

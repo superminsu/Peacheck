@@ -9,4 +9,5 @@ import kr.inhatc.spring.member.entity.Member;
 public interface MemberRepository extends JpaRepository<Member, Long>{
     
     Member findByIdAndPassword(String id, String password);
+    Member findByPosition(String position);
 }

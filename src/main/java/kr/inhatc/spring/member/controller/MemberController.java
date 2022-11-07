@@ -25,11 +25,12 @@ public class MemberController {
     private final MemberService memberService;
     
     @PostMapping("/login")
-    public MemberFormDto login(MemberFormDto dto) {
+    public Member login(Member dto) {
         log.info("MemberController login()");
-        MemberFormDto sendDto = memberService.login(dto);
+        Member sendDto = memberService.login(dto);
         return sendDto;
     }
+    
     
     @PostMapping("/save")
     public Member save(Member member) {
