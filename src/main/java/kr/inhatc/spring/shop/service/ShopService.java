@@ -1,5 +1,6 @@
 package kr.inhatc.spring.shop.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -18,15 +19,14 @@ public class ShopService {
 
     private final ShopRepository shopRepository;
     
-    // 회원 매장 찾기
-    public ShopFormDto shopFind(ShopFormDto shopFormDto) {
+    // 회원 매장 리턴
+    public List<Shop> shopFind(String id) {
         try {
-            System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + shopFormDto.getId());
-            Shop findMember = shopRepository.findById(shopFormDto.getId());
-            if (findMember.getId() != null)
-                return shopFormDto;
-            return null;
+            System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + id);
+            List<Shop> findShop = shopRepository.findById(id);
+            return findShop;
         } catch (Exception e) {
+            System.out.println("값이 없음");
             return null;
         }
     }

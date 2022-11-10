@@ -1,5 +1,8 @@
 package kr.inhatc.spring.shop.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,10 +28,10 @@ public class ShopController {
     private final ShopService shopService;
     
     @PostMapping("/shop/find")
-    public ShopFormDto find(ShopFormDto dto) {
+    public List<Shop> find(String id) {
         log.info("ShopController shopFind()");
-        ShopFormDto sendDto = shopService.shopFind(dto);
-        return sendDto;
+        List<Shop> sendShop = shopService.shopFind(id);
+        return sendShop;
     }
     
     @PostMapping("/shop/save")
