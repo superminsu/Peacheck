@@ -24,6 +24,8 @@ public class ShopService {
         try {
             System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + id);
             List<Shop> findShop = shopRepository.findById(id);
+            System.out.println(findShop);
+            
             return findShop;
         } catch (Exception e) {
             System.out.println("값이 없음");
