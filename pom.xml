@@ -83,6 +83,13 @@
 		    <groupId>org.thymeleaf.extras</groupId>
 		    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+		<!-- Dto Entity 1:1 매핑 -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
