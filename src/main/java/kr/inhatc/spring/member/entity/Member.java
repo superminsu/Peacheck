@@ -47,11 +47,14 @@ public class Member {
     private String position;    //직급
     
     
-    public static Member createMember(MemberFormDto memberFormDto) {
+    public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
         
         Member member = new Member();
         member.setId(memberFormDto.getId());
-        member.setPassword(memberFormDto.getPassword());    
+        
+        String password = passwordEncoder.encode(memberFormDto.getPassword());
+        
+        member.setPassword(password);
         member.setName(memberFormDto.getName());
         member.setBirthday(memberFormDto.getBirthday());
         member.setCity(memberFormDto.getCity());
