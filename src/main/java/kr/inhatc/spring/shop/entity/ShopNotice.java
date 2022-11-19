@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import kr.inhatc.spring.shop.dto.ShopNoticeDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,9 +39,11 @@ public class ShopNotice {
     private Shop shop;                  //해당 공지 가게
 
 
-    public ShopNotice(String title, String body) {
-        this.title = title;
-        this.body = body;
+    public static ShopNotice createShopNotice(ShopNoticeDto shopNoticeDto) {
+        ShopNotice shopNotice = new ShopNotice();
+        shopNotice.setTitle(shopNoticeDto.getTitle());
+        shopNotice.setBody(shopNoticeDto.getBody());
+        return shopNotice;
     }
     
 }
