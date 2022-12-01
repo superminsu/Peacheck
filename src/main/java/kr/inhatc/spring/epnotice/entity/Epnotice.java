@@ -6,10 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
-import kr.inhatc.spring.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +23,8 @@ public class Epnotice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "epnotice_number")
+    private Long epnoticeNo;
 
     @Column(name = "epnotice_title")
     private String title;   //제목
@@ -39,8 +37,7 @@ public class Epnotice {
     
     @Column(name = "epnotice_area")
     private String area;    //지역
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Member member;  //공지 올린 사장id
+ 
+    @Column(name = "epnotice_id")
+    private String id;  //공지 올린 사장id
 }

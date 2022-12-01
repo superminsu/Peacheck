@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 public class EpnoticeDto {
 
-    private Long id;
+    private Long epnoticeNo;
     
     private String title;
     
@@ -21,6 +21,8 @@ public class EpnoticeDto {
     private String body;
     
     private String area;
+    
+    private String id;
     
     private static ModelMapper modelMapper = new ModelMapper();
     

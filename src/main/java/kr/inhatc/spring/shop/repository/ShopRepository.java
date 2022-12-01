@@ -10,6 +10,5 @@ import kr.inhatc.spring.shop.entity.Shop;
 
 public interface ShopRepository extends JpaRepository<Shop, Long>{
     
-    Optional<Shop> findByName(String name);
     List<Shop> findById(String id);
 }

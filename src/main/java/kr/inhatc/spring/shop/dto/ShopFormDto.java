@@ -13,6 +13,8 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ShopFormDto {
+
+    private Long spNo;
     
     private String id;
     

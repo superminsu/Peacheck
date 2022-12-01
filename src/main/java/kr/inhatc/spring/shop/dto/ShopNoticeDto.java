@@ -12,6 +12,8 @@ import lombok.ToString;
 @ToString
 public class ShopNoticeDto {
 
+    private Long noticeNo;
+    
     private String title;
     
     private String body;

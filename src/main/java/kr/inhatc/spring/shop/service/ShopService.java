@@ -11,37 +11,33 @@ import kr.inhatc.spring.shop.dto.ShopFormDto;
 import kr.inhatc.spring.shop.entity.Shop;
 import kr.inhatc.spring.shop.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
 @RequiredArgsConstructor // @AutoWired 없이도 repository를 메모리에 올릴 수 있음 ( final 반드시 추가, 테스트에서는 오류남 )
+@Slf4j
 public class ShopService {
 
     private final ShopRepository shopRepository;
     
     // 회원 매장 리턴
-    public List<Shop> shopFind(String id) {
+    public List<Shop> findShop(String id) {
         try {
-            System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + id);
+            log.info("주인 아이디 : " + id);
             List<Shop> findShop = shopRepository.findById(id);
-            System.out.println(findShop);
+            log.info("매장 정보 : " + findShop);
             
             return findShop;
         } catch (Exception e) {
-            System.out.println("값이 없음");
+            log.info("값이 없음");
             return null;
         }
     }
     
     // 매장 등록
-    public Shop shopSave(Shop shop) {
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + shop.getId());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + shop.getName());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + shop.getCity());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + shop.getArea());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + shop.getAddress());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + shop.getPhone());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + shop.getSector());
+    public Shop saveShop(Shop shop) {
+        log.info("매장 정보 : " + shop);
         return shopRepository.save(shop);
     }
 }
