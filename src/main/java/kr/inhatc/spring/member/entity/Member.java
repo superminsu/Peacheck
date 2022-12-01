@@ -29,21 +29,29 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //mbrNo 값을 null로 하면 DB가 알아서 AUTO_INCREMENT 해준다
     @Column(name="member_number")
     private Long mbrNo;
-     
+    
+    @Column(name="member_id")
     private String id;          //아이디((로그인 시 회원 아이디 쿠키로 저장)
     
+    @Column(name="member_password")
     private String password;    //비밀번호
     
+    @Column(name="member_name")
     private String name;        //이름
     
+    @Column(name="member_birthday")
     private String birthday;    //생년월일
     
+    @Column(name="member_city")
     private String city;        //도시
     
+    @Column(name="member_area")
     private String area;        //지역구
     
+    @Column(name="member_phone")
     private String phone;       //전화번호
     
+    @Column(name="member_position")
     private String position;    //직급
     
     

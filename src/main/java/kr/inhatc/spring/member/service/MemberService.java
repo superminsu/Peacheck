@@ -10,10 +10,12 @@ import kr.inhatc.spring.member.dto.MemberFormDto;
 import kr.inhatc.spring.member.entity.Member;
 import kr.inhatc.spring.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
 @RequiredArgsConstructor // @AutoWired 없이도 repository를 메모리에 올릴 수 있음 ( final 반드시 추가, 테스트에서는 오류남 )
+@Slf4j
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -21,8 +23,7 @@ public class MemberService {
     // 로그인 기능
     public Member login(Member member) {
         try {
-            System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getId());
-            System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getPassword());
+            log.info("맴버 : " + member);
             Member findMember = memberRepository.findByIdAndPassword(member.getId(), member.getPassword());
             if (findMember.getId() != null && findMember.getPassword() != null)
                 return findMember;
@@ -34,14 +35,7 @@ public class MemberService {
     
     // 회원가입
     public Member saveMember(Member member) {
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getId());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getPassword());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getName());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getBirthday());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getCity());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getArea());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getPhone());
-        System.out.println("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + member.getPosition());
+        log.info("맴버 : " + member);
         return memberRepository.save(member);
     }
     
