@@ -63,8 +63,8 @@ public class ShopService {
         shopRepository.deleteById(spNo);
     }
     
-    //매장 번호  찾기
-    public Shop findShopNumber(String id, String name) {
+    //매장 찾기
+    public Shop findShopOne(String id, String name) {
         log.info("사장 아이디 : " + id + ", 매장 이름 : " + name);
         Shop findShop = shopRepository.findByIdAndName(id, name);
         return findShop;

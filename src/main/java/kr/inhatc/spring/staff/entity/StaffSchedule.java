@@ -42,7 +42,7 @@ public class StaffSchedule {
     private String endTime;     //퇴근
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_number")
+    @JoinColumn(name = "shop_spNo")
     private Shop shop;          //해당 스케쥴 가게
     
     @Column(name = "staff_schedule_name")

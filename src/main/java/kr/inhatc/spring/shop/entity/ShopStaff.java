@@ -31,12 +31,15 @@ public class ShopStaff {
     
     @Column(name = "shop_staff_id")
     private String id;
+    
+    @Column(name = "shop_staff_name")
+    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_number")
+    @JoinColumn(name = "shop_spNo")
     private Shop shop;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_number")
+    @JoinColumn(name = "member_mbrNo")
     private Member member;
 }

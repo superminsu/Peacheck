@@ -36,7 +36,7 @@ public class ShopNotice {
     private String body;                //본문
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_number")
+    @JoinColumn(name = "shop_spNo")
     private Shop shop;                  //해당 공지 가게
 
 

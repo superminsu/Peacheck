@@ -19,9 +19,9 @@ public class StaffScheduleController {
     
     //직원 스케쥴 등록
     @PostMapping("staff/schedule/save")
-    public StaffSchedule saveSchedule(StaffSchedule staffSchedule) {
+    public StaffSchedule saveSchedule(StaffSchedule staffSchedule, String onwerId, String shopName) {
         log.info("StaffScheduleController saveSchedule()");
-        StaffSchedule saveSchedule = staffScheduleService.saveStaffSchedule(staffSchedule);
+        StaffSchedule saveSchedule = staffScheduleService.saveStaffSchedule(staffSchedule, onwerId, shopName);
         return saveSchedule;
     }
     

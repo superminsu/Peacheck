@@ -52,10 +52,10 @@ public class StaffCommute {
     private String check;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_number")
+    @JoinColumn(name = "member_mbrNo")
     private Member member;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_number")
+    @JoinColumn(name = "shop_spNo")
     private Shop shop;
 }

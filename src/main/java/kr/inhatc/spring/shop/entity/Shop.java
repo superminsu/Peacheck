@@ -1,8 +1,5 @@
 package kr.inhatc.spring.shop.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -56,10 +52,6 @@ public class Shop {
     
     @Column(name="shop_sector")
     private String sector;      //업종
-    
-    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ShopNotice> shopNotices = new ArrayList<>();
-    
     
     public static Shop createShop(ShopFormDto shopFormDto) {
         

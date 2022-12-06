@@ -25,7 +25,7 @@ public class StaffCommuteService {
     //출퇴근기록표 생성(매장에 직원 등록과 동시에 같이 생성)
     public void saveComuute(String staffId, String onwerId, String shopName) {
         Member findMember = memberService.findMember(staffId);
-        Shop findShop = shopService.findShopNumber(onwerId, shopName);
+        Shop findShop = shopService.findShopOne(onwerId, shopName);
         
         if(findMember != null && findShop != null) {
             StaffCommute staffCommute = new StaffCommute();

@@ -35,8 +35,16 @@ public class MemberService {
     
     // 회원가입
     public Member saveMember(Member member) {
-        log.info("맴버 : " + member);
-        return memberRepository.save(member);
+        try {
+            log.info("맴버 : " + member);
+            Member findMember = memberRepository.findById(member.getId());
+            if(findMember == null) {
+                return memberRepository.save(member);
+            }
+            else return null;
+        } catch (Exception e) {
+            return null;
+        }
     }
     
     // 직원찾기

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.inhatc.spring.shop.entity.Shop;
 import kr.inhatc.spring.shop.entity.ShopNotice;
 import kr.inhatc.spring.shop.repository.ShopNoticeRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +20,14 @@ public class ShopNoticeService {
     
     private final ShopNoticeRepository shopNoticeRepository;
     
+    private final ShopService shopService;
+    
     //매장 공지 리턴 - 프론트에서 보내주는 매장 Long spNo 이용하여 찾기
     public List<ShopNotice> findShopNotice(Long spNo){
         try {
             log.info("spNo : " + spNo);
-            List<ShopNotice> findSNotice = shopNoticeRepository.findByShop_Shopnumber(spNo);
-            return findSNotice;
+            List<ShopNotice> findNotice = shopNoticeRepository.findByShop_SpNo(spNo);
+            return findNotice;
         } catch (Exception e) {
             log.info("값이 없음");
             return null;
@@ -32,8 +35,16 @@ public class ShopNoticeService {
     }
     
     //매장 공지 등록
-    public ShopNotice saveShopNotice(ShopNotice shopNotice) {
-        return shopNoticeRepository.save(shopNotice);
+    public ShopNotice saveShopNotice(ShopNotice shopNotice, String onwerId, String shopName) {
+        Shop findShop = shopService.findShopOne(onwerId, shopName);
+        ShopNotice saveNotice = new ShopNotice();
+        if(findShop != null) {
+            saveNotice.setTitle(shopNotice.getTitle());
+            saveNotice.setBody(shopNotice.getBody());
+            saveNotice.setShop(findShop);
+            shopNoticeRepository.save(saveNotice);
+        }
+        return saveNotice;
     }
 
     //매장 공지 수정
@@ -45,6 +56,7 @@ public class ShopNoticeService {
         if(updateNotice != null) {
             updateNotice.setTitle(shopNotice.getTitle());
             updateNotice.setBody(shopNotice.getBody());
+            shopNoticeRepository.save(updateNotice);
         }
     }
     

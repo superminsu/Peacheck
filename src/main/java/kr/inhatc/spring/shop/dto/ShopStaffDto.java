@@ -18,6 +18,8 @@ public class ShopStaffDto {
     
     private String id;
     
+    private String name;
+    
     private Shop shop;
     
     private Member member;

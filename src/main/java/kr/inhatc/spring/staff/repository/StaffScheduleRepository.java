@@ -8,5 +8,5 @@ import kr.inhatc.spring.staff.entity.StaffSchedule;
 
 public interface StaffScheduleRepository extends JpaRepository<StaffSchedule, Long>{
 
-    List<StaffSchedule> findByShop_ShopnumberAndName(Long spNo, String name);
+    List<StaffSchedule> findByShop_SpNoAndName(Long spNo, String name);
 }

@@ -67,9 +67,9 @@ public class ShopController {
     
     //매장 공지 등록
     @PostMapping("/shop/notice/save")
-    public ShopNotice saveNotice(ShopNotice shopNotice) {
+    public ShopNotice saveNotice(ShopNotice shopNotice, String onwerId, String shopName) {
         log.info("ShopController saveNotice");
-        ShopNotice saveShopNotice = shopNoticeService.saveShopNotice(shopNotice);
+        ShopNotice saveShopNotice = shopNoticeService.saveShopNotice(shopNotice, onwerId, shopName);
         return saveShopNotice;
     }
     
@@ -114,5 +114,12 @@ public class ShopController {
     public ShopStaff findStaff(String staffId, String onwerId, String shopName) {
         ShopStaff findStaff = shopStaffService.findStaff(staffId, onwerId, shopName);
         return findStaff;
+    }
+    
+    //매장 직원 전체 리턴
+    @PostMapping("shop/staff/findAll")
+    public List<ShopStaff> findAllStaff(String onwerId, String shopName){
+        List<ShopStaff> findAllStaff = shopStaffService.findAllStaff(onwerId, shopName);
+        return findAllStaff;
     }
 }
