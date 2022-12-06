@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.inhatc.spring.shop.dto.ShopFormDto;
 import kr.inhatc.spring.shop.entity.Shop;
 import kr.inhatc.spring.shop.entity.ShopNotice;
+import kr.inhatc.spring.shop.entity.ShopStaff;
 import kr.inhatc.spring.shop.service.ShopNoticeService;
 import kr.inhatc.spring.shop.service.ShopService;
+import kr.inhatc.spring.shop.service.ShopStaffService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +32,8 @@ public class ShopController {
     private final ShopService shopService;
     
     private final ShopNoticeService shopNoticeService;
+    
+    private final ShopStaffService shopStaffService;
     
     //매장 등록
     @PostMapping("/shop/save")
@@ -89,5 +93,26 @@ public class ShopController {
     public String deleteNotice(Long spnoticeNo) {
         shopNoticeService.deleteShopNotice(spnoticeNo);
         return "매장공지 삭제 완료";
+    }
+    
+    //매장 직원 등록
+    @PostMapping("shop/staff/save")
+    public String saveStaff(String staffId, String onwerId, String shopName) {
+        shopStaffService.saveStaff(staffId, onwerId, shopName);
+        return "직원 생성 완료";
+    }
+    
+    //매장 직원 삭제
+    @PostMapping("shop/staff/delete")
+    public String deleteStaff(String staffId, String onwerId, String shopName) {
+        shopStaffService.deleteStaff(staffId, onwerId, shopName);
+        return "직원 삭제 완료";
+    }
+    
+    //매장 직원 리턴(한명)
+    @PostMapping("shop/staff/findOne")
+    public ShopStaff findStaff(String staffId, String onwerId, String shopName) {
+        ShopStaff findStaff = shopStaffService.findStaff(staffId, onwerId, shopName);
+        return findStaff;
     }
 }

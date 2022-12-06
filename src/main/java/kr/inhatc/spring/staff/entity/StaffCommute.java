@@ -30,6 +30,9 @@ public class StaffCommute {
     @Column(name = "staff_commute_number")
     private Long ctNo;
     
+    @Column(name = "staff_commute_id")
+    private String id;
+    
     @Column(name = "staff_commute_year")
     private String year;
     

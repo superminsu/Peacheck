@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.inhatc.spring.shop.dto.ShopFormDto;
 import kr.inhatc.spring.shop.entity.Shop;
 import kr.inhatc.spring.shop.repository.ShopRepository;
-import kr.inhatc.spring.staff.service.StaffCommuteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,8 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 public class ShopService {
 
     private final ShopRepository shopRepository;
-    
-    private final StaffCommuteService staffCommuteService;
     
     // 회원 매장 리턴
     public List<Shop> findShop(String id) {
@@ -64,5 +61,12 @@ public class ShopService {
     //매장 삭제
     public void deleteShop(Long spNo) {
         shopRepository.deleteById(spNo);
+    }
+    
+    //매장 번호  찾기
+    public Shop findShopNumber(String id, String name) {
+        log.info("사장 아이디 : " + id + ", 매장 이름 : " + name);
+        Shop findShop = shopRepository.findByIdAndName(id, name);
+        return findShop;
     }
 }

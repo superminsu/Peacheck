@@ -39,6 +39,11 @@ public class MemberService {
         return memberRepository.save(member);
     }
     
-    // 직급 리턴
+    // 직원찾기
+    public Member findMember(String id) {
+        log.info("회원 아이디 : " + id);
+        Member findMember = memberRepository.findById(id);
+        return findMember;
+    }
     
 }

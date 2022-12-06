@@ -14,6 +14,8 @@ public class StaffCommuteDto {
 
     private Long ctNo;
     
+    private String id;
+    
     private String year;
     
     private String month;
