@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.inhatc.spring.shop.dto.ShopFormDto;
 import kr.inhatc.spring.shop.entity.Shop;
 import kr.inhatc.spring.shop.repository.ShopRepository;
+import kr.inhatc.spring.staff.service.StaffCommuteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 public class ShopService {
 
     private final ShopRepository shopRepository;
+    
+    private final StaffCommuteService staffCommuteService;
     
     // 회원 매장 리턴
     public List<Shop> findShop(String id) {
@@ -39,5 +42,27 @@ public class ShopService {
     public Shop saveShop(Shop shop) {
         log.info("매장 정보 : " + shop);
         return shopRepository.save(shop);
+    }
+    
+    // 매장 수정
+    public void updateShop(Long spNo, Shop shop) {
+        log.info("매장 번호 : " + spNo);
+        Optional<Shop> updateShopWrapper = shopRepository.findById(spNo);
+        Shop updateShop = updateShopWrapper.get();
+        
+        if(updateShop != null) {
+            updateShop.setName(shop.getName());
+            updateShop.setCity(shop.getCity());
+            updateShop.setArea(shop.getArea());
+            updateShop.setAddress(shop.getAddress());
+            updateShop.setPhone(shop.getPhone());
+            updateShop.setSector(shop.getSector());
+            shopRepository.save(updateShop);
+        }
+    }
+    
+    //매장 삭제
+    public void deleteShop(Long spNo) {
+        shopRepository.deleteById(spNo);
     }
 }

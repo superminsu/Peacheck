@@ -1,6 +1,7 @@
 package kr.inhatc.spring.shop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,4 +36,20 @@ public class ShopNoticeService {
         return shopNoticeRepository.save(shopNotice);
     }
 
+    //매장 공지 수정
+    public void updateShopNotice(Long spnoticeNo, ShopNotice shopNotice) {
+        log.info("매장공지 번호 : " + spnoticeNo);
+        Optional<ShopNotice> updateNoticeWrapper = shopNoticeRepository.findById(spnoticeNo);
+        ShopNotice updateNotice = updateNoticeWrapper.get();
+        
+        if(updateNotice != null) {
+            updateNotice.setTitle(shopNotice.getTitle());
+            updateNotice.setBody(shopNotice.getBody());
+        }
+    }
+    
+    //매장 공지 삭제
+    public void deleteShopNotice(Long spnoticeNo) {
+        shopNoticeRepository.deleteById(spnoticeNo);
+    }
 }

@@ -33,7 +33,7 @@ public class ShopController {
     
     //매장 등록
     @PostMapping("/shop/save")
-    public Shop save(Shop shop) {
+    public Shop saveShop(Shop shop) {
         log.info("ShopController shopSave()");
         Shop saveShop = shopService.saveShop(shop);
         return saveShop;
@@ -41,10 +41,24 @@ public class ShopController {
     
     //매장 찾기
     @PostMapping("/shop/find")
-    public List<Shop> find(String id) {
+    public List<Shop> findShop(String id) {
         log.info("ShopController shopFind()");
         List<Shop> sendShop = shopService.findShop(id);
         return sendShop;
+    }
+    
+    //매장 수정
+    @PostMapping("shop/update")
+    public String updateShop(Long spNo, Shop shop) {
+        shopService.updateShop(spNo, shop);
+        return "매장 수정 완료";
+    }
+    
+    //매장 삭제
+    @PostMapping("shop/delete")
+    public String deleteShop(Long spNo) {
+        shopService.deleteShop(spNo);
+        return "매장 삭제 완료";
     }
     
     //매장 공지 등록
@@ -61,5 +75,19 @@ public class ShopController {
         log.info("ShopController findNotice");
         List<ShopNotice> sendNotice = shopNoticeService.findShopNotice(spNo);
         return sendNotice;
+    }
+    
+    //매장 공지 수정
+    @PostMapping("shop/notice/update")
+    public String updateNotice(Long spnoticeNo, ShopNotice shopNotice) {
+        shopNoticeService.updateShopNotice(spnoticeNo, shopNotice);
+        return "매장공지 수정 완료";
+    }
+    
+    //매장 공지 삭제
+    @PostMapping("shop/notice/delete")
+    public String deleteNotice(Long spnoticeNo) {
+        shopNoticeService.deleteShopNotice(spnoticeNo);
+        return "매장공지 삭제 완료";
     }
 }

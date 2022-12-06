@@ -35,13 +35,15 @@ public class StaffScheduleController {
     
     //직원 스케쥴 수정
     @PostMapping("staff/schedule/update")
-    public StaffSchedule updateSchedule(Long schNo,StaffSchedule staffSchedule) {
-        return null;
+    public String updateSchedule(Long schNo,StaffSchedule staffSchedule) {
+        staffScheduleService.updateStaffSchedule(schNo, staffSchedule);
+        return "스케쥴 수정 완료";
     }
     
     //직원 스케쥴 삭제
     @PostMapping("staff/schedule/delete")
-    public StaffSchedule deleteSchedule(Long schNo) {
-        return null;
+    public String deleteSchedule(Long schNo) {
+        staffScheduleService.deleteStaffSchedule(schNo);
+        return "스케쥴 삭제 완료";
     }
 }

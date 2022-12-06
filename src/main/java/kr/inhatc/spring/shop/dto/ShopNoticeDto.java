@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 public class ShopNoticeDto {
 
-    private Long noticeNo;
+    private Long spnoticeNo;
     
     private String title;
     

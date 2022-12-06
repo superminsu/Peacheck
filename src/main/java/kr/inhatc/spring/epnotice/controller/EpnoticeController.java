@@ -40,4 +40,18 @@ public class EpnoticeController {
         List<Epnotice> findAreaEpnotice = epnoticeService.findAreaNotice(area);
         return findAreaEpnotice;
     }
+    
+    //고용공지 수정
+    @PostMapping("epnotice/update")
+    public String updateEpnotcie(Long epnoticeNo, Epnotice epnotice) {
+        epnoticeService.updateNotice(epnoticeNo, epnotice);
+        return "고용공지 수정 완료";
+    }
+    
+    //고용공지 삭제
+    @PostMapping("epnotice/delete")
+    public String deleteEpnotice(Long epnoticeNo) {
+        epnoticeService.deleteNotice(epnoticeNo);
+        return "고용공지 삭제 완료";
+    }
 }

@@ -1,6 +1,7 @@
 package kr.inhatc.spring.epnotice.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,5 +44,25 @@ public class EpnoticeService {
             log.info("값이 없음");
             return null;
         }
+    }
+    
+    // 고용 공지 수정
+    public void updateNotice(Long epnoticeNo, Epnotice epnotice) {
+        log.info("공지 번호 : " + epnoticeNo);
+        Optional<Epnotice> updateNoticeWrapper = epnoticeRepository.findById(epnoticeNo);
+        Epnotice updateNotice = updateNoticeWrapper.get();
+        
+        if(updateNotice != null) {
+            updateNotice.setTitle(epnotice.getTitle());
+            updateNotice.setSector(epnotice.getSector());
+            updateNotice.setBody(epnotice.getBody());
+            updateNotice.setArea(epnotice.getArea());
+            epnoticeRepository.save(updateNotice);
+        }
+    }
+    
+    // 고용 공지 삭제
+    public void deleteNotice(Long epnoticeNo) {
+        epnoticeRepository.deleteById(epnoticeNo);
     }
 }

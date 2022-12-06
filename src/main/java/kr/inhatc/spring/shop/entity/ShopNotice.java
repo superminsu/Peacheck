@@ -27,7 +27,7 @@ public class ShopNotice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // null 값 입력시 DB에서 자동 AUTO_INCREMENT
     @Column(name = "shop_notice_number")
-    private Long spnotcieNo;
+    private Long spnoticeNo;
     
     @Column(name = "shop_notice_title")
     private String title;               //제목
